@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :events, only: [:new, :create, :show]
+  resources :events, only: [:new, :create, :show] do
+    get 'enroll' => 'event_attendances#new'
+    post 'enroll' => 'event_attendances#create'
+  end
   root to: "events#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,2 +1,6 @@
-<h1>EventAttendances#new</h1>
-<p>Find me in app/views/event_attendances/new.html.erb</p>
+<h1 class="heading">Enroll in an Event</h1>
+<h3 class="event-name"><%= @event.name %></h3>
+
+<%= form_with method: :post do |f| %>
+  <%= f.submit "Enroll" %>
+<% end %>
