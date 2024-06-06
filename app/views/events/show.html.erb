@@ -24,5 +24,5 @@
 <% if @event.attendees.include?(current_user) %>
   <span> <%= link_to 'Unenroll', [@event, :unenroll], data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to unenroll?' } %> </span>
 <% else %>
-  <span> <%= link_to 'Enroll', [@event, :enroll] %> </span>
+  <span> <%= link_to 'Enroll', [@event, :enroll], data: { turbo_method: :post } %> </span>
 <% end %>  

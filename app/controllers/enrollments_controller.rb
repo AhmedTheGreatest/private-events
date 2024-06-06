@@ -1,11 +1,7 @@
-class EventAttendancesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_event, only: [:new, :create, :destroy]
-  before_action :already_enrolled, only: [:new, :create]
-
-  def new
-    @event_attendance = EventAttendance.new
-  end
+class EnrollmentsController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
+  before_action :set_event, only: [:create, :destroy]
+  before_action :already_enrolled, only: [:create]
 
   def create
     @event_attendance = EventAttendance.new(event_id: @event.id, attendee: current_user)
