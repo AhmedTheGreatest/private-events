@@ -1,20 +1,3 @@
 <h1 class="heading">Create a New Event</h1>
 
-<%= form_with(model: @event) do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :date %>
-    <%= f.date_select :date, type: "date" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  </div>
-
-  <%= f.submit "Create Event" %>
-<% end %>
+<%= render 'form', event: @event, submit_text: "Create Event" %>

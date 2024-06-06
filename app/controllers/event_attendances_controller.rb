@@ -1,6 +1,6 @@
 class EventAttendancesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_event, only: [:new, :create]
+  before_action :set_event, only: [:new, :create, :destroy]
   before_action :already_enrolled, only: [:new, :create]
 
   def new
@@ -14,6 +14,16 @@ class EventAttendancesController < ApplicationController
       redirect_to @event, notice: "Successfully enrolled in #{@event.name}"
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    event_attendance = EventAttendance.find_by(event: @event, attendee: current_user)
+
+    if event_attendance&.destroy
+      redirect_to @event, status: :see_other, notice: 'Successfully unenrolled.'
+    else
+      redirect_to @event, status: :unprocessable_entity, alert: 'Unable to unenroll.'
     end
   end
 
