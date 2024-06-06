@@ -5,4 +5,8 @@ class Event < ApplicationRecord
 
   scope :past, -> { where('date < ?', Date.today).order(date: :desc) }
   scope :future, -> { where('date >= ?', Date.today).order(date: :asc) }
+
+  validates :creator, presence: true
+  validates :date, presence: true
+  validates :name, presence: true
 end
