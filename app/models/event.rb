@@ -14,6 +14,7 @@ class Event < ApplicationRecord
     left_joins(:attendees)
       .where(events: { creator_id: user.id })
       .or(where(users: { id: user.id }))
+      .distinct
   end
 
   def accessible_by?(user)

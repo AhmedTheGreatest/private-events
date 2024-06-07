@@ -6,7 +6,9 @@
 
   <div class="field">
     <%= f.label :date %>
-    <%= f.date_select :date, type: "date" %>
+    <div class="date-field">
+      <%= f.date_select :date, type: "date" %>
+    </div>
   </div>
 
   <div class="field">
@@ -19,5 +21,5 @@
     <%= f.text_field :attendee_emails, value: event.attendee_emails %>
   </div>
 
-  <%= f.submit submit_text %>
+  <%= f.submit submit_text, class: 'submit-btn' %>
 <% end %>
