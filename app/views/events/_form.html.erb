@@ -14,5 +14,10 @@
     <%= f.text_field :location %>
   </div>
 
+  <div class="field">
+    <%= f.label :attendee_emails, 'Attendees (comma separated emails)' %>
+    <%= f.text_field :attendee_emails, value: event.attendee_emails %>
+  </div>
+
   <%= f.submit submit_text %>
 <% end %>
